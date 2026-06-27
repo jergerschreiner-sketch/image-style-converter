@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片插画风转换器</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="tool-panel" aria-label="图片风格转换控制台">
+        <div class="brand">
+          <div class="brand-mark">画</div>
+          <div>
+            <h1>图片插画风转换器</h1>
+            <p>上传照片，保留原图色调，转换成插画、漫画或线稿风。</p>
+          </div>
+        </div>
+
+        <label class="upload-zone" for="imageInput">
+          <input id="imageInput" type="file" accept="image/*" />
+          <span class="upload-icon" aria-hidden="true">+</span>
+          <span class="upload-title">选择一张照片</span>
+          <span class="upload-hint">建筑、校园、街景、人物都可以</span>
+        </label>
+
+        <div class="control-group">
+          <div class="group-title">风格</div>
+          <div class="segmented" role="group" aria-label="风格模式">
+            <button class="segment active" type="button" data-preset="original">原图插画</button>
+            <button class="segment" type="button" data-preset="fresh">柔和插画</button>
+            <button class="segment" type="button" data-preset="dramatic">漫画高反差</button>
+            <button class="segment" type="button" data-preset="ink">线稿淡彩</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="group-title">画面装饰</div>
+          <div class="shape-grid" role="group" aria-label="画面装饰">
+            <button class="shape-option active" type="button" data-shape="none">无装饰</button>
+            <button class="shape-option" type="button" data-shape="paper">纸张白边</button>
+            <button class="shape-option" type="button" data-shape="comic">漫画框</button>
+            <button class="shape-option" type="button" data-shape="film">胶片感</button>
+          </div>
+        </div>
+
+        <div class="control-group sliders">
+          <label>
+            <span>色块强度</span>
+            <input id="posterize" type="range" min="3" max="9" value="5" />
+          </label>
+          <label>
+            <span>描边密度</span>
+            <input id="edgeDensity" type="range" min="20" max="90" value="48" />
+          </label>
+          <label>
+            <span>线条粗细</span>
+            <input id="goldWidth" type="range" min="1" max="5" value="2" />
+          </label>
+          <label>
+            <span>精修度</span>
+            <input id="refinement" type="range" min="1" max="5" value="4" />
+          </label>
+          <label>
+            <span>装饰留白</span>
+            <input id="borderWidth" type="range" min="12" max="52" value="28" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="generateButton" class="primary-action" type="button" disabled>生成图像</button>
+          <button id="downloadButton" class="secondary-action" type="button" disabled>下载 PNG</button>
+        </div>
+      </section>
+
+      <section class="preview-panel" aria-label="图像预览">
+        <div class="canvas-wrap">
+          <canvas id="previewCanvas" width="1400" height="950"></canvas>
+          <div id="emptyState" class="empty-state">
+            <div class="empty-frame"></div>
+            <p>上传照片后，这里会出现风格化预览。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
